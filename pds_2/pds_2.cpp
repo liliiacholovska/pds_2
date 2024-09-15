@@ -1,10 +1,15 @@
-﻿#include <iostream>
+#include <iostream>
 
 using namespace std;
 
 // Функція для виконання операції XOR
 bool XOR(bool a, bool b) {
     return a != b; // повертає true, якщо a і b різні
+}
+
+// Функція для обчислення fn(p, q, r) = p ⊕ (q ⊕ r)
+bool fn(bool p, bool q, bool r) {
+    return XOR(p, XOR(q, r));
 }
 
 int main() {
@@ -21,7 +26,7 @@ int main() {
             for (int k = 0; k < 2; ++k) {
                 r = k;
                 // Обчислення fn(p, q, r) = p ⊕ (q ⊕ r)
-                bool result = XOR(p, XOR(q, r));
+                bool result = fn(p, q, r);
                 // Виведення рядка таблиці
                 cout << p << "\t" << q << "\t" << r << "\t"
                     << result << "\n";
